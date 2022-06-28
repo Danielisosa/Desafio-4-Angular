@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  font-family: "Rubik", sans-serif;
+  color: #3d2f18;
+}
+body {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.text-precio {
+  font-size: 1.8em;
+  font-weight: bold;
+}
+.text-envio {
+  font-size: 1.4em;
+  color: green;
+}
+p {
+  font-size: 1.4em;
+}

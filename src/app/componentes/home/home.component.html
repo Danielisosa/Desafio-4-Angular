@@ -1,0 +1,39 @@
+<app-header></app-header>
+
+<ngb-carousel *ngIf="images">
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img class="img-carousel" [src]="images[0]" alt="Random first slide">
+    </div>
+
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img class="img-carousel" [src]="images[1]" alt="Random second slide">
+    </div>
+
+  </ng-template>
+
+</ngb-carousel>
+<main>
+  <div>
+    <h1 *ngIf="busqueda!=''">Estas buscando: {{ busqueda }}</h1>
+    <h1>Ofertas de la semana</h1>
+  </div>
+  <div id="resultados">
+
+    <mat-card *ngFor="let producto of productos">
+      <a routerLink="/descripcion/{{ producto.id }}">
+        <div class="d-flex justify-content-center">
+          <img class="mat-card-image " mat-card-image [src]="producto.img">
+        </div>
+
+        <mat-card-title>{{ producto.titulo }}</mat-card-title>
+        <mat-card-content>
+          <span class="text-precio">{{ producto.precio }}</span>
+          <p *ngIf="producto.envio!= 'No'" class="text-envio"> Envio Gratis</p>
+        </mat-card-content>
+      </a>
+    </mat-card>
+  </div>
+</main>

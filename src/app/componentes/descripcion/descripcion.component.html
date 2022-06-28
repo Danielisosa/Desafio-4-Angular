@@ -1,0 +1,67 @@
+<app-header></app-header>
+<div class="container-fluid contenedor-principal">
+  <div class="pt-3 ps-5">
+    <a [routerLink]="['/home']" routerLinkActive="router-link-active">Volver al listado</a>
+  </div>
+
+  <div class="container-fluid" *ngFor="let product of productos">
+    <div *ngIf="productoId== product.id" class="container-fluid d-flex container-descripcion">
+      <div class="d-flex justify-content-center ">
+        <div>
+          <img [src]="product.img" alt="">
+        </div>
+        <div>
+          <img class="img-prod" [src]="product.img" alt="">
+        </div>
+
+      </div>
+      <mat-card class="example-card">
+        <mat-card-subtitle>Nuevo | {{ product.vendidos}} vendidos</mat-card-subtitle>
+        <mat-card-title>{{ product.titulo }}</mat-card-title>
+        <div *ngIf="product.opiniones!=0">
+          <mat-icon>star</mat-icon>
+          <mat-icon>star</mat-icon>
+          <mat-icon>star</mat-icon>
+          <mat-icon>star</mat-icon>
+          <mat-icon>grade</mat-icon>
+          {{ product.opiniones }} opiniones
+        </div>
+
+        <mat-card-content>
+          <h2 class="text-precio mt-3">{{ product.precio }}</h2>
+          <a href="#">Ver los metodos de pago</a>
+          <div class="mt-3" *ngIf="product.envio=='Si'; else noGratis">
+            <p class="text-envio">
+              <mat-icon>local_shipping</mat-icon> Envio gratis a todo el pais
+            </p>
+          </div>
+          <ng-template class="mt-3" #noGratis>
+            <p>
+              <mat-icon>3p</mat-icon> Entrega a acordar con el vendedor
+            </p>
+          </ng-template>
+          <p class="text-secondary">{{ product.ubicacion}}</p>
+          <a href="#">Ver los costos de envio</a>
+          <p class="mt-5">Cantidad: <select name="" id="">
+              <option value="1">1 unidad</option>
+              <option value="2">2 unidades</option>
+              <option value="3">3 unidades</option>
+              <option value="4">4 unidades</option>
+              <option value="5">5 unidades</option>
+              <option value="6">6 unidades</option>
+              <option value="7">+ de 6 unidades</option>
+            </select>( {{ product.disponibles }} disponible )</p>
+
+        </mat-card-content>
+        <mat-card-actions class="d-flex justify-content-center">
+          <button class="text-light">Comprar Ahora</button>
+        </mat-card-actions>
+        <mat-card-footer>
+
+        </mat-card-footer>
+      </mat-card>
+
+
+    </div>
+  </div>
+</div>
